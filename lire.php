@@ -9,7 +9,7 @@ if ($file = fopen("compteur.txt", "r+")) {
     while(!feof($file)) {
         $line = fgets($file);
         # do same stuff with the $line
-        echo $line . "\r\n";
+        echo $line . "<br />";
     }
     fclose($file);
 }

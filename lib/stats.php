@@ -6,6 +6,7 @@ $ip = $_SERVER["REMOTE_ADDR"];
 $user_agent = $_SERVER["HTTP_USER_AGENT"];
 $urlPageVisite = $_SERVER["REQUEST_URI"];
 
+/*****************via la fonction trackMe()*******************************************************/
 
 // function trackMe()
 // {
@@ -53,7 +54,6 @@ $urlPageVisite = $_SERVER["REQUEST_URI"];
 //     echo "<p>" . $donnee . "</p>";
 //   }
 // }
-
 
 /************************************************************************/
 function getUserInfo(){

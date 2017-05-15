@@ -14,9 +14,14 @@
     include_once("lib/stats.php");
 
     // On appelle la fonction trackMe qu'on a créé dans stats.php
-    trackMe();
-    statsToBDD();
+    // trackMe();
+
+    $donnees = getUserInfo();
+
+    ecrireStats($donnees);
+
      ?>
+     
     <h1>Insertion dans la BDD</h1>
 
     <p>Server log analytics provides companies and organisations with all the features of the Javascript tracking code method, but with a higher level of security and feasibility. It can be used for all kinds of purposes – from web analytics to intranet analytics, and even CRM and other platform-based analytics.</p>

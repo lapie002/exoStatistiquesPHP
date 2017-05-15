@@ -1,9 +1,9 @@
 <?php
-
+// url sur le distant : http://51.255.196.206/lapie002/ExoStatistiques/lib/statstobdd.php
 //connection a la base de donnees
 require_once("../includes/connection.php");
 
-// les valeurs
+// les variables
 $ip = $_SERVER["REMOTE_ADDR"];
 $user_agent = $_SERVER["HTTP_USER_AGENT"];
 $urlPageVisite = $_SERVER["REQUEST_URI"];

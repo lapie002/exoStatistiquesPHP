@@ -8,7 +8,17 @@ $ip = $_SERVER["REMOTE_ADDR"];
 $user_agent = $_SERVER["HTTP_USER_AGENT"];
 $urlPageVisite = $_SERVER["REQUEST_URI"];
 // $webbrowser = "";
+//function converstion du temps
+$timeVisite = $_SERVER["REQUEST_TIME"];
 
+
+/************************************************/
+function getDateToSting($timeVisite){
+
+  $dateDuServeur =  date("Y-m-d H:i:s",$timeVisite);
+
+  return $dateDuServeur;
+}
 
 /****************************/
 function getOS() {
@@ -16,7 +26,7 @@ function getOS() {
     $os_platform    =   "Unknown OS Platform";
 
     $os_array       =   array(
-                            '/windows nt 10/i'     =>  'Windows 10',
+                            '/windows nt 10/i'      =>  'Windows 10',
                             '/windows nt 6.3/i'     =>  'Windows 8.1',
                             '/windows nt 6.2/i'     =>  'Windows 8',
                             '/windows nt 6.1/i'     =>  'Windows 7',
@@ -77,7 +87,7 @@ function getBrowser() {
 
 $user_os        =   getOS();
 $user_browser   =   getBrowser();
-
+$user_time      = getDateToSting($timeVisite);
 /****************************/
 
 // // get webbrowser used by user 1er fonction remplacer par getBrowser
@@ -101,25 +111,27 @@ $user_browser   =   getBrowser();
 
 
 // On ajoute une entrée dans la table jeux_video avec une rquete preparer.
-$reponse = $conn->prepare('INSERT INTO statistiques(ipInternaute, systemeExploitation, 	navigateur, urlPageVisite) VALUES(:ipInternaute, :systemeExploitation, :navigateur, :urlPageVisite)');
-$reponse->execute(array(
-  'ipInternaute' => $ip,
-  'systemeExploitation' => $user_os,
-  'navigateur' => $user_browser,
-  'urlPageVisite' => $urlPageVisite
-  ));
 
-/*
+// $reponse = $conn->prepare('INSERT INTO statistiques(ipInternaute, systemeExploitation, 	navigateur, urlPageVisite) VALUES(:ipInternaute, :systemeExploitation, :navigateur, :urlPageVisite)');
+// $reponse->execute(array(
+//   'ipInternaute' => $ip,
+//   'systemeExploitation' => $user_os,
+//   'navigateur' => $user_browser,
+//   'urlPageVisite' => $urlPageVisite
+//   ));
+
+
 // exemple avec le timestamp() mais ca marche pas
 
 $reponse = $conn->prepare('INSERT INTO statistiques(ipInternaute, systemeExploitation, 	navigateur, urlPageVisite, dateHeureVisite) VALUES(:ipInternaute, :systemeExploitation, :navigateur, :urlPageVisite, :dateHeureVisite)');
 $reponse->execute(array(
   'ipInternaute' => $ip,
-  'systemeExploitation' => $os,
-  'navigateur' => $os,
+  'systemeExploitation' => $user_os,
+  'navigateur' => $user_browser,
   'urlPageVisite' => $urlPageVisite,
-  'dateHeureVisite' => 'CURRENT_TIMESTAMP()'
+  'dateHeureVisite' => $user_time
   ));
-*/
+
+
 echo "you have been hacked !!!";
  ?>

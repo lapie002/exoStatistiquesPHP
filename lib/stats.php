@@ -85,7 +85,7 @@ function ecrireStats($donnees){
   foreach($donnees as $donnee){
 // A faire : au lieu de l'echo écrire la donnée dans le fichier
     //echo "<p>" . $donnee . "</p>";
-    $stat = fopen('compteur.txt', 'a+');
+       $stat = fopen('compteur.txt', 'a+');
        //ecrire dans le fichier
        fputs($stat, $donnee);
        fputs($stat, "\n");
@@ -100,6 +100,7 @@ function getOS() {
     global $user_agent;
     $os_platform    =   "Unknown OS Platform";
 
+      //-------  pour le tableau /pat/i - Ignore case ---------------------//
     $os_array       =   array(
                             '/windows nt 10/i'     =>  'Windows 10',
                             '/windows nt 6.3/i'     =>  'Windows 8.1',
@@ -138,7 +139,7 @@ function getOS() {
 function getBrowser() {
     global $user_agent;
     $browser        =   "Unknown Browser";
-
+    //-------  pour le tableau /pat/i - Ignore case ---------------------//
     $browser_array  =   array(
                             '/msie/i'       =>  'Internet Explorer',
                             '/firefox/i'    =>  'Firefox',
